@@ -9,6 +9,12 @@
         [
             'header' => 'Gestión',
         ],
+        [
+        'name'=>'Roles y permisos',
+        'icon'=>'fa-solid fa-shield-halved',
+        'href'=>route('admin.roles.index'),
+        'active'=> request()->routeIs('admin.roles.*')
+        ] ,
         // Aquí irán los demás ítems del sidebar más adelante
     ];
 @endphp

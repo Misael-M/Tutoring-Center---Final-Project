@@ -24,6 +24,7 @@ export default {
         './vendor/wireui/wireui/src/Components/**/*.php',
 
         './node_modules/flowbite/**/*.js',
+        './vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php'
     ],
 
     theme: {
