@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,9 +15,8 @@ class User extends Authenticatable
 {
     use HasApiTokens;
 
-    /** @use HasFactory<UserFactory> */
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
-
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
@@ -33,6 +31,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'id_number',
+        'country_code',
+        'phone',
+        'address'
     ];
 
     /**
@@ -67,5 +69,14 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    //Relacion uno a uno
+    public function patient(){
+        return $this->hasOne(Patient::class);
+    }
+
+    //Relacion uno a uno con Doctor
+    public function doctor(){
+        return $this->hasOne(Doctor::class);
     }
 }
