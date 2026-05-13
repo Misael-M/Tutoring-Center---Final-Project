@@ -11,3 +11,8 @@ Route::resource('roles', App\Http\Controllers\Admin\RoleController::class);
 
 //Gestion de usuarios
 Route::resource('usuarios', App\Http\Controllers\Admin\UserController::class);
+
+//Gestion de estudiantes
+Route::resource('estudiantes', App\Http\Controllers\Admin\StudentController::class)->parameters([
+    'estudiantes' => 'student'
+]);

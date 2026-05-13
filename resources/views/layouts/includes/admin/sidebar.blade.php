@@ -21,7 +21,12 @@
         'href'=>route('admin.usuarios.index'),
         'active'=> request()->routeIs('admin.usuarios.*')
         ] ,
-        
+        [
+        'name'=>'Estudiantes',
+        'icon'=>'fa-solid fa-user-graduate',
+        'href'=>route('admin.estudiantes.index'),
+        'active'=> request()->routeIs('admin.estudiantes.*')
+        ] ,
         // Aquí irán los demás ítems del sidebar más adelante
     ];
 @endphp

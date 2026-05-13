@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
         
         //Crear usuario de prueba cada vez que se ejecuten las migraciones
         User::factory()->create([
-            'name'     => 'Tester',
-            'email'    => 'test@example.com',
+            'name' => 'Tester',
+            'email' => 'test@example.com',
             'password' => bcrypt('12345678'),
             'id_number' => '123456789',
             'phone' => '9999999999',

@@ -62,10 +62,11 @@ class UserController extends Controller
         $usuario->assignRole($role);
 
         // 3. Crear el perfil respectivo según el rol
-        if ($usuario->hasRole('Paciente')) {
-            $usuario->patient()->create([]);
-        } elseif ($usuario->hasRole('Doctor')) {
-            $usuario->doctor()->create([]);
+        if ($usuario->hasRole('Estudiante')) {
+            $usuario->student()->create([]);
+        } elseif ($usuario->hasRole('Profesor')) {
+            // Asumiendo que puede haber profesores, ajustamos
+            // $usuario->teacher()->create([]);
         }
 
         // Confirmación de operación exitosa
@@ -140,23 +141,17 @@ class UserController extends Controller
             'text' => 'El usuario ha sido modificado correctamente',
         ]);
 
-        // Si el usuario actualizado es un paciente, maneja su perfil médico
-        if($usuario->hasRole('Paciente')){
-            if (!$usuario->patient) {
-                $patient = $usuario->patient()->create([]);
-                return redirect()->route('admin.patients.edit', $patient);
+        // Si el usuario actualizado es un estudiante, maneja su perfil académico
+        if($usuario->hasRole('Estudiante')){
+            if (!$usuario->student) {
+                $student = $usuario->student()->create([]);
+                return redirect()->route('admin.estudiantes.edit', $student);
             }
-            return redirect()->route('admin.patients.edit', $usuario->patient);
+            return redirect()->route('admin.estudiantes.edit', $usuario->student);
         }
 
-        // Si el usuario actualizado es un doctor, maneja su perfil médico
-        if($usuario->hasRole('Doctor')){
-            if (!$usuario->doctor) {
-                $doctor = $usuario->doctor()->create([]);
-                return redirect()->route('admin.doctors.edit', $doctor);
-            }
-            return redirect()->route('admin.doctors.edit', $usuario->doctor);
-        }
+        // Si el usuario actualizado es un profesor (opcional a futuro)
+        // if($usuario->hasRole('Profesor')){ ... }
 
         // Redireccionado a la tabla de usuarios
         return redirect(route('admin.usuarios.index'));
