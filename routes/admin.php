@@ -16,3 +16,7 @@ Route::resource('usuarios', App\Http\Controllers\Admin\UserController::class);
 Route::resource('estudiantes', App\Http\Controllers\Admin\StudentController::class)->parameters([
     'estudiantes' => 'student'
 ]);
+
+//Gestion de tutores
+Route::get('tutors/{tutor}/schedule', [App\Http\Controllers\Admin\TutorController::class, 'schedule'])->name('tutors.schedule');
+Route::resource('tutors', App\Http\Controllers\Admin\TutorController::class);

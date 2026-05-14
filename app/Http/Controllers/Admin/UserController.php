@@ -64,9 +64,8 @@ class UserController extends Controller
         // 3. Crear el perfil respectivo según el rol
         if ($usuario->hasRole('Estudiante')) {
             $usuario->student()->create([]);
-        } elseif ($usuario->hasRole('Profesor')) {
-            // Asumiendo que puede haber profesores, ajustamos
-            // $usuario->teacher()->create([]);
+        } elseif ($usuario->hasRole('Tutor')) {
+            $usuario->tutor()->create([]);
         }
 
         // Confirmación de operación exitosa
@@ -150,8 +149,14 @@ class UserController extends Controller
             return redirect()->route('admin.estudiantes.edit', $usuario->student);
         }
 
-        // Si el usuario actualizado es un profesor (opcional a futuro)
-        // if($usuario->hasRole('Profesor')){ ... }
+        // Si el usuario actualizado es un tutor, maneja su perfil
+        if($usuario->hasRole('Tutor')){
+            if (!$usuario->tutor) {
+                $tutor = $usuario->tutor()->create([]);
+                return redirect()->route('admin.tutors.edit', $tutor);
+            }
+            return redirect()->route('admin.tutors.edit', $usuario->tutor);
+        }
 
         // Redireccionado a la tabla de usuarios
         return redirect(route('admin.usuarios.index'));

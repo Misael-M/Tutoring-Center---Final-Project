@@ -27,6 +27,12 @@
         'href'=>route('admin.estudiantes.index'),
         'active'=> request()->routeIs('admin.estudiantes.*')
         ] ,
+        [
+        'name'=>'Tutores',
+        'icon'=>'fa-solid fa-chalkboard-user',
+        'href'=>route('admin.tutors.index'),
+        'active'=> request()->routeIs('admin.tutors.*')
+        ] ,
         // Aquí irán los demás ítems del sidebar más adelante
     ];
 @endphp
