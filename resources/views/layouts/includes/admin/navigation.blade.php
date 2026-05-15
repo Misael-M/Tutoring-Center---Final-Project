@@ -1,16 +1,18 @@
-<nav class="fixed top-0 z-50 w-full bg-neutral-primary-soft border-b border-default">
-  <div class="px-3 py-3 lg:px-5 lg:pl-3">
+<nav class="fixed top-0 z-50 w-full bg-[#ff6b6b] border-b border-red-400">
+  <div class="px-3 py-2 lg:px-5 lg:pl-3">
     <div class="flex items-center justify-between">
       <div class="flex items-center justify-start rtl:justify-end">
-        <button data-drawer-target="top-bar-sidebar" data-drawer-toggle="top-bar-sidebar" aria-controls="top-bar-sidebar" type="button" class="sm:hidden text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm p-2 focus:outline-none">
+        <button data-drawer-target="top-bar-sidebar" data-drawer-toggle="top-bar-sidebar" aria-controls="top-bar-sidebar" type="button" class="sm:hidden text-white bg-transparent box-border border border-transparent hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium leading-5 rounded-base text-sm p-2 focus:outline-none">
             <span class="sr-only">Open sidebar</span>
             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
   <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
    </svg>
          </button>
         <a href="/" class="flex ms-2 md:me-24 items-center gap-2">
-          {{-- Logo visible solo en móvil cuando el sidebar está oculto --}}
-          <span class="sm:hidden inline-flex items-center justify-center w-8 h-8 rounded-md bg-blue-600 text-white text-sm font-bold">TC</span>
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Red Apple" class="w-16 h-16 object-contain">
+            <span class="self-center text-base text-white font-bold leading-tight">
+                Centro de tutorias<br>Red Apple
+            </span>
         </a>
       </div>
       <!-- Settings Dropdown -->

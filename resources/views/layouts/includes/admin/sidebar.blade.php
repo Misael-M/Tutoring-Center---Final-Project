@@ -41,17 +41,7 @@
     class="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidebar">
 
-    <div class="h-full px-3 py-4 overflow-y-auto bg-neutral-primary-soft border-e border-default">
-
-        {{-- Logo / Nombre del sistema --}}
-        <a href="/" class="flex items-center gap-2 ps-2.5 mb-6">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-blue-600 text-white text-sm font-bold">
-                TC
-            </span>
-            <span class="self-center text-lg text-heading font-semibold whitespace-nowrap">
-                Tutoring Center
-            </span>
-        </a>
+    <div class="h-full px-3 pt-24 pb-4 overflow-y-auto bg-neutral-primary-soft border-e border-default">
 
         <ul class="space-y-1 font-medium">
             @foreach ($links as $link)
