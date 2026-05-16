@@ -32,6 +32,12 @@
         'icon'=>'fa-solid fa-chalkboard-user',
         'href'=>route('admin.tutors.index'),
         'active'=> request()->routeIs('admin.tutors.*')
+        ],
+        [
+        'name'=>'Citas',
+        'icon'=>'fa-solid fa-calendar-check',
+        'href'=>route('admin.appointments.index'),
+        'active'=> request()->routeIs('admin.appointments.*')
         ] ,
         // Aquí irán los demás ítems del sidebar más adelante
     ];

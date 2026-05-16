@@ -20,3 +20,8 @@ Route::resource('estudiantes', App\Http\Controllers\Admin\StudentController::cla
 //Gestion de tutores
 Route::get('tutors/{tutor}/schedule', [App\Http\Controllers\Admin\TutorController::class, 'schedule'])->name('tutors.schedule');
 Route::resource('tutors', App\Http\Controllers\Admin\TutorController::class);
+
+// Gestion de citas (Tutorias)
+Route::get('appointments/{appointment}/session', [App\Http\Controllers\Admin\AppointmentController::class, 'session'])->name('appointments.session');
+Route::get('appointments/{appointment}/detail', [App\Http\Controllers\Admin\AppointmentController::class, 'detail'])->name('appointments.detail');
+Route::resource('appointments', App\Http\Controllers\Admin\AppointmentController::class);

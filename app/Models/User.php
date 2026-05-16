@@ -89,4 +89,15 @@ class User extends Authenticatable
     public function tutor(){
         return $this->hasOne(Tutor::class);
     }
+
+    // Relaciones para citas
+    public function appointmentsAsStudent()
+    {
+        return $this->hasMany(Appointment::class, 'student_id');
+    }
+
+    public function appointmentsAsTutor()
+    {
+        return $this->hasMany(Appointment::class, 'tutor_id');
+    }
 }
