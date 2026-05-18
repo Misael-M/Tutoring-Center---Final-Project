@@ -5,12 +5,12 @@
             'href' => route('admin.dashboard'),
         ],
         [
-            'name' => 'Ejemplo',
+            'name' => 'Panel de Bienvenida',
         ],
     ];
 @endphp
 
 <x-admin-layout title="Dashboard" :breadcrumbs="$Breadcrumbs">
-    Hola desde el panel de control administrativo.
+    ¡Hola! Bienvenidos al centro de tutorías Red Apple donde tu aprendizaje es nuestra prioridad
 </x-admin-layout>
 

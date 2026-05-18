@@ -19,7 +19,7 @@
 			<x-wire-input label="Nombre" name="name" placeholder="Nombre del rol" 
                 value="{{ old('name', $role->name)}}"></x-wire-input>
                 <div class="flex justify-end mt-4">
-                    <x-wire-button type="submit" primary>Actualizar</x-wire-button>
+                    <x-wire-button type="submit" red>Actualizar</x-wire-button>
                 </div>
 		</form>
 	</x-wire-card>

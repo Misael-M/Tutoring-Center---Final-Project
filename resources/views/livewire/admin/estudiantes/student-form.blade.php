@@ -12,7 +12,7 @@
                 </div>
                 <div class="flex gap-3 mt-6 lg:mt-0">
                     <x-wire-button outline gray href="{{ route('admin.estudiantes.index') }}">Volver</x-wire-button>
-                    <x-wire-button type="submit" primary spinner="save">
+                    <x-wire-button type="submit" red spinner="save">
                         <i class="fa-solid fa-check mr-2"></i>
                         Guardar cambios 
                     </x-wire-button>
@@ -47,21 +47,21 @@
                 
                 {{-- Tab 1: Datos personales --}}
                 <x-tab-content tab="datos-personales">
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg shadow-sm">
+                    <div class="p-4 mb-6 rounded-r-lg shadow-sm" style="background: #fff8f8; border-left: 4px solid #ff6b6b;">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">
-                                    <i class="fa-solid fa-user-gear text-blue-500 text-xl mt-1"></i>
+                                    <i class="fa-solid fa-user-gear text-xl mt-1" style="color: #ff6b6b;"></i>
                                 </div>
                                 <div class="ml-3">
-                                    <h3 class="text-sm font-bold text-blue-800">Edición de cuenta de usuario</h3>
-                                    <div class="mt-1 text-sm text-blue-600">
+                                    <h3 class="text-sm font-bold" style="color: #b33b3b;">Edición de cuenta de usuario</h3>
+                                    <div class="mt-1 text-sm text-gray-600">
                                         <p>La <strong>información de acceso</strong> (nombre, email y contraseña) debe de gestionarse desde la cuenta de usuario asociada.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex-shrink-0">
-                                <x-wire-button primary sm href="{{ route('admin.usuarios.edit', $student->user) }}" target="_blank">
+                                <x-wire-button red sm href="{{ route('admin.usuarios.edit', $student->user) }}" target="_blank">
                                     Editar usuario <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
                                 </x-wire-button>
                             </div>
@@ -123,8 +123,8 @@
 
                             {{-- Subir nuevas imágenes --}}
                             <div class="mt-2">
-                                <input type="file" wire:model="newImages" multiple class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition" />
-                                <div wire:loading wire:target="newImages" class="text-sm text-blue-500 mt-2">Subiendo imágenes...</div>
+                                <input type="file" wire:model="newImages" multiple class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100 transition" />
+                                <div wire:loading wire:target="newImages" class="text-sm text-red-500 mt-2">Subiendo imágenes...</div>
                             </div>
                             
                             {{-- Vista previa de nuevas imágenes --}}
@@ -161,7 +161,7 @@
                             </div>
                         @endforeach
 
-                        <x-wire-button type="button" wire:click="addContact" outline primary>
+                        <x-wire-button type="button" wire:click="addContact" outline red>
                             <i class="fa-solid fa-plus mr-2"></i> Añadir otro contacto
                         </x-wire-button>
                     </div>

@@ -10,8 +10,8 @@
          </button>
         <a href="/" class="flex ms-2 md:me-24 items-center gap-2">
             <img src="{{ asset('images/logo.png') }}" alt="Logo Red Apple" class="w-16 h-16 object-contain">
-            <span class="self-center text-base text-white font-bold leading-tight">
-                Centro de tutorias<br>Red Apple
+            <span class="self-center text-xl text-white font-bold leading-tight">
+                Centro de tutorías<br>Red Apple
             </span>
         </a>
       </div>

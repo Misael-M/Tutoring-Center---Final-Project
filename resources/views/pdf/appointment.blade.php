@@ -16,7 +16,7 @@
             width: 100%;
         }
         .header-left { display: table-cell; vertical-align: middle; width: 70px; }
-        .header-logo { width: 65px; height: 65px; }
+        .header-logo { width: auto; height: 65px; }
         .header-text { display: table-cell; vertical-align: middle; padding-left: 16px; }
         .header-text h1 { font-size: 20px; font-weight: bold; letter-spacing: 0.5px; }
         .header-text p  { font-size: 12px; opacity: 0.85; margin-top: 3px; }
