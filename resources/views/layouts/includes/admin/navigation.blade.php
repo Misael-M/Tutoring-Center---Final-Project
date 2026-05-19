@@ -1,5 +1,5 @@
-<nav class="fixed top-0 z-50 w-full bg-[#ff6b6b] border-b border-red-400">
-  <div class="px-3 py-2 lg:px-5 lg:pl-3">
+<nav class="fixed top-0 z-50 w-full bg-[#ff6b6b] border-b border-red-400 h-20 flex items-center">
+  <div class="px-3 lg:px-5 lg:pl-3 w-full">
     <div class="flex items-center justify-between">
       <div class="flex items-center justify-start rtl:justify-end">
         <button data-drawer-target="top-bar-sidebar" data-drawer-toggle="top-bar-sidebar" aria-controls="top-bar-sidebar" type="button" class="sm:hidden text-white bg-transparent box-border border border-transparent hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium leading-5 rounded-base text-sm p-2 focus:outline-none">
@@ -9,7 +9,7 @@
    </svg>
          </button>
         <a href="/" class="flex ms-2 md:me-24 items-center gap-2">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo Red Apple" class="w-16 h-16 object-contain">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Red Apple" class="w-20 h-20 object-contain">
             <span class="self-center text-xl text-white font-bold leading-tight">
                 Centro de tutorías<br>Red Apple
             </span>

@@ -29,6 +29,22 @@ class AppointmentManager extends Component
     public $availableEndTimes = [];  // Fin-times consecutivos desde el start elegido
     public $tutorDays         = [];  // Días con disponibilidad del tutor
 
+    // Custom Spanish validation messages
+    protected $messages = [
+        'student_id.required' => 'El estudiante es obligatorio.',
+        'student_id.exists' => 'El estudiante seleccionado no es válido.',
+        'tutor_id.required' => 'El tutor es obligatorio.',
+        'tutor_id.exists' => 'El tutor seleccionado no es válido.',
+        'date.required' => 'La fecha es obligatoria.',
+        'date.date' => 'La fecha seleccionada no es válida.',
+        'start_time.required' => 'La hora de inicio es obligatoria.',
+        'end_time.required' => 'La hora de fin es obligatoria.',
+        'reason.required' => 'El motivo de la tutoría es obligatorio.',
+        'reason.string' => 'El motivo debe ser texto.',
+        'status.required' => 'El estado es obligatorio.',
+        'status.in' => 'El estado seleccionado no es válido.',
+    ];
+
     public function mount(Appointment $appointment = null)
     {
         if ($appointment && $appointment->exists) {

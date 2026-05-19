@@ -39,6 +39,12 @@
         'href'=>route('admin.appointments.index'),
         'active'=> request()->routeIs('admin.appointments.*')
         ] ,
+        [
+        'name'=>'Soporte',
+        'icon'=>'fa-solid fa-headset',
+        'href'=>'#',
+        'active'=> false
+        ] ,
         // Aquí irán los demás ítems del sidebar más adelante
     ];
 @endphp

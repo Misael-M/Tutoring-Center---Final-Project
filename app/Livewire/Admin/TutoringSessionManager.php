@@ -30,6 +30,17 @@ class TutoringSessionManager extends Component
     public $showPreviousAppointmentsModal = false;
     public $previousAppointments = [];
 
+    // Custom Spanish validation messages
+    protected $messages = [
+        'student_performance.required' => 'El desempeño del estudiante es obligatorio.',
+        'student_performance.string' => 'El desempeño del estudiante debe ser texto.',
+        'topics_to_improve.required' => 'Los temas a mejorar son obligatorios.',
+        'topics_to_improve.string' => 'Los temas a mejorar deben ser texto.',
+        'notes.string' => 'Las notas deben ser texto.',
+        'newMaterials.*.image' => 'El archivo debe ser una imagen.',
+        'newMaterials.*.max' => 'La imagen no debe pesar más de 5MB.',
+    ];
+
     public function openPreviousAppointments()
     {
         $this->previousAppointments = Appointment::with(['tutor', 'session'])

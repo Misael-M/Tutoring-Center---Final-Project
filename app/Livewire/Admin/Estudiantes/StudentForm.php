@@ -83,14 +83,28 @@ class StudentForm extends Component
     public function save()
     {
         $this->validate([
-            'scholargrade_id' => 'nullable|exists:scholar_grades,id',
-            'school_name' => 'nullable|string|max:255',
-            'school_address' => 'nullable|string|max:255',
-            'topics_needed' => 'nullable|string',
+            'scholargrade_id' => 'required|exists:scholar_grades,id',
+            'school_name' => 'required|string|max:255',
+            'school_address' => 'required|string|max:255',
+            'topics_needed' => 'required|string',
             'contacts.*.name' => 'required|string|max:255',
             'contacts.*.phone' => 'required|string|max:20',
             'contacts.*.relationship' => 'required|string|max:100',
             'newImages.*' => 'image|max:5120', // Max 5MB
+        ], [
+            'scholargrade_id.required' => 'El grado escolar es obligatorio.',
+            'scholargrade_id.exists' => 'El grado escolar seleccionado no es válido.',
+            'school_name.required' => 'El nombre de la escuela es obligatorio.',
+            'school_name.string' => 'El nombre de la escuela debe ser texto.',
+            'school_name.max' => 'El nombre de la escuela no puede tener más de 255 caracteres.',
+            'school_address.required' => 'La dirección de la escuela es obligatoria.',
+            'school_address.string' => 'La dirección de la escuela debe ser texto.',
+            'school_address.max' => 'La dirección de la escuela no puede tener más de 255 caracteres.',
+            'topics_needed.required' => 'Los temas que necesita mejorar son obligatorios.',
+            'topics_needed.string' => 'Los temas que necesita mejorar deben ser texto.',
+            'contacts.*.name.required' => 'El nombre del contacto es obligatorio.',
+            'contacts.*.phone.required' => 'El teléfono del contacto es obligatorio.',
+            'contacts.*.relationship.required' => 'El parentesco con el estudiante es obligatorio.',
         ]);
 
         // Guardar Estudiante

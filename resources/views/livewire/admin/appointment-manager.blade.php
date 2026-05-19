@@ -14,7 +14,7 @@
                 <div class="sm:col-span-3">
                     <label for="student_id" class="block text-sm font-medium text-gray-700">Estudiante *</label>
                     <div class="mt-1">
-                        <select id="student_id" wire:model="student_id" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        <select id="student_id" wire:model="student_id" class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border-gray-300 rounded-md">
                             <option value="">-- Seleccionar estudiante --</option>
                             @foreach($students as $student)
                                 <option value="{{ $student->id }}">{{ $student->name }} ({{ $student->email }})</option>
@@ -27,7 +27,7 @@
                 <div class="sm:col-span-3">
                     <label for="tutor_id" class="block text-sm font-medium text-gray-700">Tutor *</label>
                     <div class="mt-1">
-                        <select id="tutor_id" wire:model.live="tutor_id" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        <select id="tutor_id" wire:model.live="tutor_id" class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border-gray-300 rounded-md">
                             <option value="">-- Seleccionar tutor --</option>
                             @foreach($tutors as $tutor)
                                 <option value="{{ $tutor->id }}">{{ $tutor->name }} ({{ $tutor->tutor->specialty ?? 'Sin especialidad' }})</option>
@@ -45,7 +45,7 @@
                     <label for="date" class="block text-sm font-medium text-gray-700">Fecha *</label>
                     <div class="mt-1">
                         <input type="date" id="date" wire:model.live="date"
-                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                            class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border-gray-300 rounded-md"
                             @if($tutor_id && count($tutorDays) > 0)
                                 {{-- Opcional: hint visual de qué días tiene el tutor --}}
                             @endif
@@ -57,7 +57,7 @@
                             @php
                                 $dayNames = [1=>'Lunes',2=>'Martes',3=>'Miércoles',4=>'Jueves',5=>'Viernes',6=>'Sábado',7=>'Domingo'];
                             @endphp
-                            <p class="mt-1 text-xs text-indigo-600">
+                            <p class="mt-1 text-xs text-red-600">
                                 <i class="fa-solid fa-circle-info mr-1"></i>
                                 Este tutor atiende los:
                                 <strong>{{ implode(', ', array_map(fn($d) => $dayNames[$d] ?? $d, $tutorDays)) }}</strong>
@@ -93,7 +93,7 @@
                             </div>
                         @else
                             <select id="selected_start_time" wire:model.live="selectedStartTime"
-                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border-gray-300 rounded-md">
                                 <option value="">-- Hora de inicio --</option>
                                 @foreach($availableSlots as $slot)
                                     <option value="{{ $slot['start'] }}">{{ $slot['start'] }}</option>
@@ -120,7 +120,7 @@
                             </div>
                         @else
                             <select id="selected_end_time" wire:model.live="selectedEndTime"
-                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border-gray-300 rounded-md">
                                 <option value="">-- Hora de fin --</option>
                                 @foreach($availableEndTimes as $endTime)
                                     <option value="{{ $endTime }}">{{ $endTime }}</option>
@@ -157,7 +157,7 @@
                 <div class="sm:col-span-6">
                     <label for="reason" class="block text-sm font-medium text-gray-700">Motivo de la tutoría *</label>
                     <div class="mt-1">
-                        <textarea id="reason" wire:model="reason" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Describa el motivo de la tutoría..."></textarea>
+                        <textarea id="reason" wire:model="reason" rows="3" class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Describa el motivo de la tutoría..."></textarea>
                         @error('reason') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                 <div class="sm:col-span-6">
                     <label for="status" class="block text-sm font-medium text-gray-700">Estado</label>
                     <div class="mt-1">
-                        <select id="status" wire:model="status" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        <select id="status" wire:model="status" class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border-gray-300 rounded-md">
                             <option value="Programada">Programada</option>
                             <option value="Completada">Completada</option>
                             <option value="Cancelada">Cancelada</option>
@@ -178,12 +178,12 @@
             </div>
             
             <div class="mt-6 flex justify-end space-x-3">
-                <a href="{{ route('admin.appointments.index') }}" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <x-wire-button outline gray href="{{ route('admin.appointments.index') }}">
                     <i class="fa-solid fa-xmark mr-1"></i> Cancelar
-                </a>
-                <button wire:click="save" type="button" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                </x-wire-button>
+                <x-wire-button red wire:click="save" spinner="save">
                     <i class="fa-solid {{ $isEdit ? 'fa-save' : 'fa-calendar-check' }} mr-1"></i> {{ $isEdit ? 'Guardar Cambios' : 'Confirmar Cita' }}
-                </button>
+                </x-wire-button>
             </div>
         </div>
     </div>

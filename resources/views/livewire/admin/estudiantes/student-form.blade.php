@@ -30,15 +30,15 @@
                         <i class="fa-solid fa-user me-2"></i> Datos personales
                     </x-tab-link>
 
-                    <x-tab-link tab="situacion-escolar">
+                    <x-tab-link tab="situacion-escolar" :error="$errors->has('scholargrade_id') || $errors->has('school_name') || $errors->has('school_address')">
                         <i class="fa-solid fa-school me-2"></i> Situación escolar
                     </x-tab-link>
 
-                    <x-tab-link tab="informacion-general">
+                    <x-tab-link tab="informacion-general" :error="$errors->has('topics_needed')">
                         <i class="fa-solid fa-circle-info me-2"></i> Información general
                     </x-tab-link>
 
-                    <x-tab-link tab="adulto-cargo">
+                    <x-tab-link tab="adulto-cargo" :error="$errors->has('contacts.*.name') || $errors->has('contacts.*.phone') || $errors->has('contacts.*.relationship')">
                         <i class="fa-solid fa-user-shield me-2"></i> Adulto a cargo
                     </x-tab-link>
                 </x-slot>
@@ -87,22 +87,22 @@
                 <x-tab-content tab="situacion-escolar">
                     <div class="grid lg:grid-cols-2 gap-6">
                         <div class="lg:col-span-2">
-                            <x-wire-native-select label="Grado Escolar" wire:model="scholargrade_id">
+                            <x-wire-native-select label="Grado Escolar *" wire:model="scholargrade_id">
                                 <option value="">Selecciona un grado escolar</option>
                                 @foreach ($scholarGrades as $grade)
                                     <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                                 @endforeach
                             </x-wire-native-select>
                         </div>
-                        <x-wire-input label="Escuela de procedencia" wire:model="school_name" placeholder="Nombre de la escuela..." />
-                        <x-wire-input label="Dirección de la escuela" wire:model="school_address" placeholder="Ubicación de la escuela..." />
+                        <x-wire-input label="Escuela de procedencia *" wire:model="school_name" placeholder="Nombre de la escuela..." />
+                        <x-wire-input label="Dirección de la escuela *" wire:model="school_address" placeholder="Ubicación de la escuela..." />
                     </div>
                 </x-tab-content>
 
                 {{-- Tab 3: Información general --}}
                 <x-tab-content tab="informacion-general">
                     <div class="space-y-6">
-                        <x-wire-textarea label="Temas con los que necesita ayuda" wire:model="topics_needed" placeholder="Ej. Matemáticas (álgebra), Inglés..." rows="4"></x-wire-textarea>
+                        <x-wire-textarea label="Temas con los que necesita ayuda *" wire:model="topics_needed" placeholder="Ej. Matemáticas (álgebra), Inglés..." rows="4"></x-wire-textarea>
                         
                         <div>
                             <h4 class="text-sm font-medium text-gray-700 mb-2">Imágenes de referencia (tareas, temarios, etc.)</h4>
@@ -154,9 +154,9 @@
                                     @endif
                                 </div>
                                 <div class="grid lg:grid-cols-2 gap-4">
-                                    <x-wire-input label="Nombre del contacto" wire:model="contacts.{{ $index }}.name" placeholder="Ej. María Pérez" required />
-                                    <x-wire-input label="Teléfono" wire:model="contacts.{{ $index }}.phone" placeholder="(999) 999 9999" required />
-                                    <x-wire-input label="Relación con el estudiante" wire:model="contacts.{{ $index }}.relationship" placeholder="Ej. Madre, Padre, Tutor..." class="lg:col-span-2" required />
+                                    <x-wire-input label="Nombre del contacto *" wire:model="contacts.{{ $index }}.name" placeholder="Ej. María Pérez" required />
+                                    <x-wire-input label="Teléfono *" wire:model="contacts.{{ $index }}.phone" placeholder="(999) 999 9999" required />
+                                    <x-wire-input label="Relación con el estudiante *" wire:model="contacts.{{ $index }}.relationship" placeholder="Ej. Madre, Padre, Tutor..." class="lg:col-span-2" required />
                                 </div>
                             </div>
                         @endforeach

@@ -8,8 +8,9 @@
     <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
 
         {{-- HEADER --}}
-        <div style="background-color: #ff6b6b; padding: 24px 30px; display: flex; align-items: center;">
-            <h1 style="color: #ffffff; font-size: 20px; margin: 0;">Centro de Tutorías Red Apple</h1>
+        <div style="background-color: #ff6b6b; padding: 20px 30px; line-height: 48px;">
+            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/logo.png'))) }}" alt="Logo Red Apple" style="height: 48px; width: auto; vertical-align: middle; margin-right: 12px; display: inline-block;">
+            <h1 style="color: #ffffff; font-size: 20px; font-weight: bold; vertical-align: middle; display: inline-block; margin: 0; font-family: Arial, sans-serif;">Centro de Tutorías Red Apple</h1>
         </div>
 
         {{-- BODY --}}

@@ -18,7 +18,7 @@
                 <p class="text-xl font-bold text-gray-900">{{ $appointment->student->name }}</p>
                 <p class="text-sm text-gray-500">DNI: {{ $appointment->student->id_number ?? 'N/A' }}</p>
                 <p class="text-sm text-gray-500">
-                    <i class="fa-regular fa-calendar mr-1 text-indigo-400"></i>
+                    <i class="fa-regular fa-calendar mr-1 text-red-400"></i>
                     {{ \Carbon\Carbon::parse($appointment->date)->format('d/m/Y') }}
                     &middot; {{ \Carbon\Carbon::parse($appointment->start_time)->format('H:i') }}
                     – {{ \Carbon\Carbon::parse($appointment->end_time)->format('H:i') }}
@@ -43,26 +43,26 @@
     <div class="bg-white shadow sm:rounded-lg overflow-hidden">
         <div class="px-6 py-4 border-b border-gray-100">
             <h2 class="text-base font-semibold text-gray-700">
-                <i class="fa-solid fa-chalkboard-user mr-2 text-indigo-500"></i>Detalles de la Sesión
+                <i class="fa-solid fa-chalkboard-user mr-2" style="color: #ff6b6b;"></i>Detalles de la Sesión
             </h2>
         </div>
 
         @if($appointment->session)
             <div class="px-6 py-5 divide-y divide-gray-100 space-y-0">
                 <div class="py-4">
-                    <p class="text-sm font-semibold text-indigo-600 mb-1">Motivo de la tutoría</p>
+                    <p class="text-sm font-semibold text-red-600 mb-1">Motivo de la tutoría</p>
                     <p class="text-sm text-gray-800">{{ $appointment->reason ?: '—' }}</p>
                 </div>
                 <div class="py-4">
-                    <p class="text-sm font-semibold text-indigo-600 mb-1">Desempeño del estudiante</p>
+                    <p class="text-sm font-semibold text-red-600 mb-1">Desempeño del estudiante</p>
                     <p class="text-sm text-gray-800">{{ $appointment->session->student_performance ?: '—' }}</p>
                 </div>
                 <div class="py-4">
-                    <p class="text-sm font-semibold text-indigo-600 mb-1">Temas a mejorar</p>
+                    <p class="text-sm font-semibold text-red-600 mb-1">Temas a mejorar</p>
                     <p class="text-sm text-gray-800">{{ $appointment->session->topics_to_improve ?: '—' }}</p>
                 </div>
                 <div class="py-4">
-                    <p class="text-sm font-semibold text-indigo-600 mb-1">Notas Adicionales</p>
+                    <p class="text-sm font-semibold text-red-600 mb-1">Notas Adicionales</p>
                     <p class="text-sm text-gray-800">{{ $appointment->session->notes ?: 'Ninguna' }}</p>
                 </div>
             </div>
@@ -77,7 +77,7 @@
     {{-- ── TARJETA MATERIAL DE REPASO ───────────────────────────────────── --}}
     <div class="bg-white shadow sm:rounded-lg overflow-hidden">
         <div class="px-6 py-4 border-b border-gray-100 flex items-center">
-            <i class="fa-solid fa-images mr-2 text-indigo-500"></i>
+            <i class="fa-solid fa-images mr-2" style="color: #ff6b6b;"></i>
             <h2 class="text-base font-semibold text-gray-700">Material de Repaso</h2>
         </div>
 
@@ -113,10 +113,9 @@
 
     {{-- ── PIE: Botón volver ────────────────────────────────────────────── --}}
     <div class="flex justify-end pb-6">
-        <a href="javascript:history.back()"
-           class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <x-wire-button outline gray href="javascript:history.back()">
             <i class="fa-solid fa-arrow-left mr-2"></i> Volver a Citas
-        </a>
+        </x-wire-button>
     </div>
 
 </div>

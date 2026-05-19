@@ -3,10 +3,9 @@
         {{-- Header --}}
         <div class="px-6 py-5 border-b border-gray-100 flex items-center justify-between">
             <h2 class="text-xl font-bold text-gray-800">Gestor de horarios</h2>
-            <button wire:click="saveSchedule"
-                class="bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors shadow-sm">
+            <x-wire-button red wire:click="saveSchedule" spinner="saveSchedule">
                 Guardar horario
-            </button>
+            </x-wire-button>
         </div>
 
         {{-- Tabla de Horarios --}}
@@ -39,10 +38,10 @@
                                 <td class="py-4 px-4 align-top border-l border-gray-50">
                                     <div class="flex flex-col space-y-2">
                                         {{-- Botón Todos (Seleccionar hora completa) --}}
-                                        <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer font-medium mb-1 hover:text-indigo-600 transition-colors">
+                                        <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer font-medium mb-1 hover:text-red-600 transition-colors">
                                             <input type="checkbox"
                                                 wire:click="toggleFullHour({{ $dayId }}, '{{ $hour }}')"
-                                                class="rounded border-gray-300 text-indigo-500 focus:ring-indigo-500 cursor-pointer"
+                                                class="rounded border-gray-300 text-red-600 focus:ring-red-500 cursor-pointer"
                                                 {{-- Lógica visual para ver si todos están activos (muy básica para el ejemplo) --}}
                                             >
                                             Todos
@@ -53,7 +52,7 @@
                                             <label class="flex items-center gap-2 text-sm text-gray-500 cursor-pointer hover:text-gray-900 transition-colors">
                                                 <input type="checkbox"
                                                     wire:model="scheduleMatrix.{{ $dayId }}.{{ $slot }}"
-                                                    class="rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+                                                    class="rounded border-gray-300 text-red-600 focus:ring-red-500 cursor-pointer">
                                                 {{ $slot }}
                                             </label>
                                         @endforeach

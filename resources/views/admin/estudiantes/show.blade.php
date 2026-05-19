@@ -22,9 +22,9 @@
                     Detalles personales y académicos.
                 </p>
             </div>
-            <a href="{{ route('admin.appointments.index', ['student_id' => $student->user->id]) }}" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <x-wire-button red href="{{ route('admin.appointments.index', ['student_id' => $student->user->id]) }}">
                 <i class="fa-solid fa-calendar mr-2"></i> Ver sus Citas
-            </a>
+            </x-wire-button>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
             <dl class="sm:divide-y sm:divide-gray-200">

@@ -14,23 +14,40 @@
             </div>
             
             <div class="flex space-x-3">
-                <a href="{{ $appointment->student->student ? route('admin.estudiantes.show', $appointment->student->student->id) : '#' }}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <i class="fa-solid fa-file-lines mr-2 text-indigo-600"></i> Ver datos del estudiante
-                </a>
+                <x-wire-button outline red href="{{ $appointment->student->student ? route('admin.estudiantes.show', $appointment->student->student->id) : '#' }}">
+                    <i class="fa-solid fa-file-lines mr-2"></i> Ver datos del estudiante
+                </x-wire-button>
                 
-                <button wire:click="openPreviousAppointments" type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <i class="fa-solid fa-clock-rotate-left mr-2 text-indigo-600"></i> Citas anteriores
-                </button>
+                <x-wire-button outline red wire:click="openPreviousAppointments">
+                    <i class="fa-solid fa-clock-rotate-left mr-2"></i> Citas anteriores
+                </x-wire-button>
             </div>
         </div>
 
+        <style>
+            .tab-link-red {
+                color: #6b7280; /* text-gray-500 */
+                border-bottom-width: 2px;
+                border-color: transparent;
+                transition: all 0.2s ease-in-out;
+            }
+            .tab-link-red:hover {
+                color: #ff6b6b !important;
+                border-color: #e5e7eb !important;
+            }
+            .tab-link-red.active {
+                color: #ff6b6b !important;
+                border-color: #ff6b6b !important;
+                font-weight: 600;
+            }
+        </style>
         <div class="border-b border-gray-200">
             <nav class="-mb-px flex space-x-8 px-6" aria-label="Tabs">
-                <button wire:click="setTab('session')" class="{{ $tab === 'session' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center">
+                <button wire:click="setTab('session')" class="tab-link-red {{ $tab === 'session' ? 'active' : '' }} whitespace-nowrap py-4 px-1 border-b-2 text-sm flex items-center">
                     <i class="fa-solid fa-chalkboard-user mr-2"></i> Sesión
                 </button>
 
-                <button wire:click="setTab('materials')" class="{{ $tab === 'materials' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center">
+                <button wire:click="setTab('materials')" class="tab-link-red {{ $tab === 'materials' ? 'active' : '' }} whitespace-nowrap py-4 px-1 border-b-2 text-sm flex items-center">
                     <i class="fa-solid fa-file-image mr-2"></i> Material de Repaso
                 </button>
             </nav>
@@ -42,7 +59,7 @@
                     <div>
                         <label for="student_performance" class="block text-sm font-medium text-gray-700">Desempeño del estudiante *</label>
                         <div class="mt-1">
-                            <textarea id="student_performance" wire:model="student_performance" rows="4" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Describa el desempeño del estudiante aquí..."></textarea>
+                            <textarea id="student_performance" wire:model="student_performance" rows="4" class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Describa el desempeño del estudiante aquí..."></textarea>
                             @error('student_performance') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -50,7 +67,7 @@
                     <div>
                         <label for="topics_to_improve" class="block text-sm font-medium text-gray-700">Temas a mejorar *</label>
                         <div class="mt-1">
-                            <textarea id="topics_to_improve" wire:model="topics_to_improve" rows="4" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Describa los temas a mejorar aquí..."></textarea>
+                            <textarea id="topics_to_improve" wire:model="topics_to_improve" rows="4" class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Describa los temas a mejorar aquí..."></textarea>
                             @error('topics_to_improve') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -58,7 +75,7 @@
                     <div>
                         <label for="notes" class="block text-sm font-medium text-gray-700">Notas</label>
                         <div class="mt-1">
-                            <textarea id="notes" wire:model="notes" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Agregue notas adicionales sobre la sesión..."></textarea>
+                            <textarea id="notes" wire:model="notes" rows="3" class="shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Agregue notas adicionales sobre la sesión..."></textarea>
                             @error('notes') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -75,7 +92,7 @@
                                     <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                                 <div class="flex text-sm text-gray-600 justify-center">
-                                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                    <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500">
                                         <span>Subir archivos</span>
                                         <input id="file-upload" wire:model="newMaterials" type="file" class="sr-only" multiple accept="image/*">
                                     </label>
@@ -84,7 +101,7 @@
                                 <p class="text-xs text-gray-500">PNG, JPG, WEBP hasta 5MB</p>
                             </div>
                             <div wire:loading wire:target="newMaterials" class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
-                                <span class="text-indigo-600 font-medium">Subiendo...</span>
+                                <span class="text-red-600 font-medium">Subiendo...</span>
                             </div>
                         </div>
                         @error('newMaterials.*') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
@@ -106,10 +123,10 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <div class="mt-4 flex justify-end">
-                                <button wire:click="uploadMaterials" type="button" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                             <div class="mt-4 flex justify-end">
+                                <x-wire-button red wire:click="uploadMaterials" spinner="uploadMaterials">
                                     <i class="fa-solid fa-upload mr-2"></i> Subir Materiales
-                                </button>
+                                </x-wire-button>
                             </div>
                         </div>
                     @endif
@@ -143,10 +160,10 @@
             @endif
             
             <!-- Botón de Guardar Sesión global para ambas pestañas -->
-            <div class="mt-8 pt-6 border-t border-gray-200 flex justify-end">
-                <button wire:click="saveSession" type="button" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+             <div class="mt-8 pt-6 border-t border-gray-200 flex justify-end">
+                <x-wire-button red wire:click="saveSession" spinner="saveSession">
                     <i class="fa-solid fa-save mr-2"></i> Guardar Sesión
-                </button>
+                </x-wire-button>
             </div>
         </div>
     </div>
@@ -171,23 +188,22 @@
                                 <i class="fa-solid fa-xmark text-xl"></i>
                             </button>
                         </div>
-                        
                         <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
                             @forelse($previousAppointments as $prevAppointment)
-                                <div class="border border-indigo-100 rounded-lg p-4 bg-white shadow-sm hover:shadow transition">
+                                <div class="border border-red-100 rounded-lg p-4 bg-white shadow-sm hover:shadow transition">
                                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
                                         <div class="mb-2 sm:mb-0">
                                             <h4 class="font-bold text-gray-900 flex items-center">
-                                                <i class="fa-regular fa-calendar text-indigo-600 mr-2"></i> 
+                                                <i class="fa-regular fa-calendar text-red-600 mr-2"></i> 
                                                 {{ \Carbon\Carbon::parse($prevAppointment->date)->format('d/m/Y') }} a las {{ \Carbon\Carbon::parse($prevAppointment->start_time)->format('H:i') }}
                                             </h4>
                                             <p class="text-sm text-gray-500 mt-1 ml-6">
                                                 Atendido por: Tutor(a) {{ $prevAppointment->tutor->name }}
                                             </p>
                                         </div>
-                                        <a href="{{ route('admin.appointments.detail', $prevAppointment) }}" class="inline-flex items-center px-3 py-1.5 border border-indigo-200 text-sm font-medium rounded-md text-indigo-700 bg-indigo-50 hover:bg-indigo-100 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        <x-wire-button outline red sm href="{{ route('admin.appointments.detail', $prevAppointment) }}">
                                             Consultar Detalle
-                                        </a>
+                                        </x-wire-button>
                                     </div>
                                     
                                     @if($prevAppointment->session)
